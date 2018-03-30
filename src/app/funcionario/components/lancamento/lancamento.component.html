@@ -1,0 +1,49 @@
+<div fxLayoutAlign="center">
+  <mat-list>
+	<mat-list-item fxLayoutAlign="center">
+	  <a mat-button color="warn" routerLink="/funcionario/listagem">
+	  	Ver lançamentos
+	  </a>
+	</mat-list-item>
+	<mat-list-item>
+	  <strong>Data:</strong>&nbsp;{{ dataAtual }}
+	</mat-list-item>
+	<mat-list-item>
+	  <strong>Localização:</strong>&nbsp;{{ geoLocation }} 
+	  &nbsp;
+	  <a target="_blank" *ngIf="geoLocation"
+	  	[href]="obterUrlMapa()">abrir mapa</a>
+	</mat-list-item>
+    <mat-list-item *ngIf="exibirInicioTrabalho()" 
+    	fxLayoutAlign="center">
+	  <button mat-raised-button color="primary"
+	  	(click)="iniciarTrabalho()">
+	  	Iniciar Trabalho
+	  </button>
+	</mat-list-item>
+    <mat-list-item *ngIf="exibirInicioAlmoco()" 
+    	fxLayoutAlign="center">
+	  <button mat-raised-button color="primary"
+	  	(click)="iniciarAlmoco()">
+	  	Iniciar Almoço
+	  </button>
+	</mat-list-item>
+	<mat-list-item *ngIf="exibirTerminoAlmoco()" 
+		fxLayoutAlign="center">
+	  <button mat-raised-button color="primary"
+	  	(click)="terminarAlmoco()">
+	  	Terminar Almoço
+	  </button>
+	</mat-list-item>
+	<mat-list-item *ngIf="exibirTerminoTrabalho()" 
+		fxLayoutAlign="center">
+	  <button mat-raised-button color="primary"
+	  	(click)="terminarTrabalho()">
+	  	Terminar Trabalho
+	  </button>
+	</mat-list-item>
+  </mat-list>
+</div>
+
+
+

@@ -1,0 +1,74 @@
+<form [formGroup]="form" novalidate>
+  <mat-form-field>
+    <mat-select placeholder="Funcionários"
+      formControlName="funcs"
+      [(value)]="funcionarioId"
+      (selectionChange)="exibirLancamentos()">
+      <mat-option 
+        *ngFor="let funcionario of funcionarios" 
+        [value]="funcionario.id">
+        {{ funcionario.nome }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<a mat-button color="warn" 
+  routerLink="/admin/cadastro"
+  *ngIf="funcionarioId">
+  Adicionar lançamento
+</a>
+
+<mat-table #table [dataSource]="dataSource" 
+  matSort (matSortChange)="ordenar($event)">
+
+	<ng-container matColumnDef="data">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+      	Data
+      </mat-header-cell>
+      <mat-cell *matCellDef="let lancamento">
+      	{{ lancamento.data | data }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+      	Tipo
+      </mat-header-cell>
+      <mat-cell *matCellDef="let lancamento">
+      	{{ lancamento.tipo | tipo }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="localizacao">
+      <mat-header-cell *matHeaderCellDef>
+      	Localização
+      </mat-header-cell>
+      <mat-cell *matCellDef="let lancamento">
+      	{{ lancamento.localizacao }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acao">
+      <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
+      <mat-cell *matCellDef="let lancamento">
+        <a routerLink="{{ '/admin/atualizacao/' + lancamento.id }}"
+          ><mat-icon matTooltip="Editar lançamento">create</mat-icon></a>
+        <a (click)="removerDialog(lancamento.id)" 
+          style="cursor: pointer"><mat-icon matTooltip="Remover lançamento">clear</mat-icon></a>
+      </mat-cell>
+    </ng-container>
+
+	<mat-header-row 
+		*matHeaderRowDef="colunas"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+</mat-table>
+
+<mat-paginator 
+  [length]="totalLancamentos"
+  [pageSize]="25"
+  (page)="paginar($event)">
+</mat-paginator>
+
+
+

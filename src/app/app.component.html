@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Ponto Inteligente</span>
+  <span class="toolbar-spacer"></span>
+  <a (click)="sair()" style="cursor: pointer"
+    alt="Sair" title="Sair"
+    *ngIf="autenticado()">
+    <mat-icon 
+    	class="toolbar-icon"
+    	matTooltip="Sair">
+    	exit_to_app
+    </mat-icon>
+  </a>
+</mat-toolbar>
+<router-outlet></router-outlet>
