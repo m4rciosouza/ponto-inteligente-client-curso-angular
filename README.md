@@ -1,5 +1,5 @@
 # Ponto Inteligente Client
-Código cliente Angular 5 do sistema de ponto inteligente.
+Código cliente Angular do sistema de ponto inteligente.
 ### Como executar a aplicação
 O código cliente depende da API RESTful [https://github.com/m4rciosouza/ponto-inteligente-api-curso-angular](https://github.com/m4rciosouza/ponto-inteligente-api-curso-angular), que deverá estar configurada e em execução como requisito.
 Para executar o cliente (após a execução da API RESTful), execute os seguintes passos:
